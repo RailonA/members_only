@@ -16,17 +16,22 @@
 <% @posts.each do |post| %>
    <div class="box">
     <article class="media ">
+    <% if user_signed_in? %>
        <div class="image is-64x64">
             <figure class="media-left">
 						<%= gravatar_image_tag(post.user.email, size: 64, alt: post.user.name) %>
             </figure>
         </div>
+    <%end%>
         <div class="media-content">
             <div class="content">
+                <% if user_signed_in? %>
                     <strong><%= post.user.name %></strong><br/>
                     <small><%= post.user.username %></small><br/>
+                    <%end%>
                     <p><%= post.post %></p>
             </div>
+
             <% if user_signed_in? %>
             <nav class="level">
                 <div class="level-left is-mobile">

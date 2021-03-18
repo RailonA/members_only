@@ -25,7 +25,7 @@ Run `rails db:migrate` and make sure the commande succeded
 - Run `$ rails server`
 - In the browser go to http://127.0.0.1:3000/users/sign_up
 - This page should display :arrow_down:
-- ![screenshot](./app/assets/images/twitter_sign_up_page.png)
+- ![screenshot](./app/assets/images/members-only.png)
 - Create a new user by putting informations inside the text fields
 #### Test the tables
 - First run `rails c`

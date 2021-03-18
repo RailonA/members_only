@@ -1,16 +1,60 @@
-   <nav class="navbar is-info">
-    <div class="navbar-brand">
-      <%= link_to root_path, class: "navbar-item" do%>
-          <h1 class="title is-5">MEMBERS ONLY</h1>
-      <% end %>
-      <div class="navbar-burger burger" data-target="navbarExample">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
 
-   <div id="navbarExample" class="navbar-menu">
+
+    <header  class="container-fluid mb-3  bg-dark">
+      <nav class="navbar navbar-expand-lg d-column d-lg-none bg-dark ">
+        <div class="d-flex col">
+            <%= link_to root_path, class: "navbar-item" do%>
+          <h1 class="title is-5 text-white ">MEMBERS ONLY</h1>
+            <% end %>
+        </div>
+
+        <button class="navbar-toggler text-white " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon burger">
+            <i class="fas fa-bars"></i>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ">
+                <li class="nav-item ">
+              <a class="nav-link" >
+                  <%= link_to "New Post", root_path, class: "text-white"%>
+              </a>
+            </li>
+             <% if user_signed_in? %>
+            <li class="nav-item ">
+              <a class="nav-link" >
+                <%= link_to current_user.name, edit_user_registration_path, class: "text-white" %>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-white" %>
+              </a>
+            </li>
+              <%else%>
+            <li class="nav-item">
+              <a class="nav-link">
+                  <%= link_to 'Sign In', new_user_session_path, class: "text-white" %>
+              </a>
+            </li>
+           <li class="nav-item">
+              <a class="nav-link">
+                <%= link_to 'Sign Up', new_user_registration_path, class: "text-white" %>   
+              </a>
+            </li>
+             <% end %>
+
+          </ul>
+        </div>
+      </nav>
+
+      <nav class="navbar navbar-expand-lg d-none d-lg-flex bg-dark" >
+          <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do%>
+          <h1 class="title is-5 text-white">MEMBERS ONLY</h1>
+      <% end %>
+      </div>
+          <div id="navbarExample" class="navbar-menu">
       <div class="navbar-end">
       <div class="navbar-item">
           <div class="field is-grouped">
@@ -36,6 +80,7 @@
       </div>
    </div>
 </div>
+</nav>
 
-  
-  </nav>
+
+  </header>

@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-   before_action :signed_in_only!, only: %i[:new, :create]
+  before_action :signed_in_only!, only: %i[new create]
 
   # GET /posts or /posts.json
   def index

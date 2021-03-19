@@ -15,21 +15,21 @@
       <div class="navbar-item">
           <div class="field is-grouped">
               <p class="control">
-                  <%= link_to "New Post", root_path, class: "button is-info is-inverted" %>
+                  <%= user_new_post %>
               </p>
               <% if user_signed_in? %>
               <p class="control">
-              <%= link_to current_user.name, edit_user_registration_path, class: "button is-info" %>
+              <%= current_user_link(current_user.name) %>
               </p>
               <p>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button is-info" %>
+              <%= user_logout %>
               </p>
               <%else%>
               <p class= "control">
-              <%= link_to 'Sign In', new_user_session_path, class: "button is_info" %>
+              <%= user_sign_in %>
               </p>
               <p class= "control">
-              <%= link_to 'Sign Up', new_user_registration_path, class: "button is_info" %>
+              <%= user_sign_up %>
               </p>
               <% end %>
           </div>

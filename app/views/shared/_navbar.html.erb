@@ -17,21 +17,18 @@
               <p class="control">
                   <%= user_new_post %>
               </p>
-              <% if user_signed_in? %>
               <p class="control">
               <%= current_user_link(current_user.name) %>
               </p>
               <p>
               <%= user_logout %>
               </p>
-              <%else%>
               <p class= "control">
               <%= user_sign_in %>
               </p>
               <p class= "control">
               <%= user_sign_up %>
               </p>
-              <% end %>
           </div>
       </div>
    </div>

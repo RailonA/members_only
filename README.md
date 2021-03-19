@@ -30,7 +30,7 @@ Run `rails db:migrate` and make sure the commande succeded
 #### Test the tables
 - First run `rails c`
 - In the rails console make sure all the tables are working correctly. Run `User`
-- Then look at all User to make sure that information used to greate the user account was pushed successfully to the database.
+- Then look at all User to make sure that information used to create the user account was pushed successfully to the database.
 1. `user = User`
 2. `pp user.all` shows details of all the users
 ## :handshake: Contributing

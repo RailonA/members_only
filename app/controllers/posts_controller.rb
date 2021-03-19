@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
-  before_action :signed_in?, only: %i[new create]
-  before_action :set_post, only: [:destroy]
+  include PostsHelper
+
+  before_action :signed_in_only!, only: %i[new create]
+  before_action :set_post, only: %i[ show edit update destroy ]
 
 
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
-    new
+    @post = Post.new
   end
 
   # GET /posts/new

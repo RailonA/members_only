@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   before_action :signed_in_only!, only: %i[new create]
   before_action :set_post, only: %i[ show edit update destroy ]
 
-
   # GET /posts or /posts.json
   def index
     @posts = Post.all.order('created_at DESC')
@@ -15,7 +14,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
   end
-  
+
   # POST /posts or /posts.json
   def create
     @post = current_user.posts.build(post_params)
@@ -54,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   private
-    
+
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])

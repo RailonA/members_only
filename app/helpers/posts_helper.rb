@@ -77,7 +77,13 @@ module PostsHelper
     format(current_user.username) if user_signed_in?
   end 
 
+  # def render_icon
+  #   render partial: 'icon' if user_signed_in?
+  # end
 
 
+  def icon_post
+    link_to fa_icon 'circle', new_user_session_path, class: '' if user_signed_in?
+  end
 
 end

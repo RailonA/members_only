@@ -82,8 +82,31 @@ module PostsHelper
   # end
 
 
-  def icon_post
-    link_to fa_icon 'circle', new_user_session_path, class: '' if user_signed_in?
+  def icon_link
+    link_to fa_icon('link', type: :fa), posts_path, class: "level-item icon"  if user_signed_in?
   end
 
+  def icon_pencil
+    link_to fa_icon('pencil', type: :fa), posts_path, class: "level-item icon"  if user_signed_in?
+   end
+
+   def icon_trash
+    link_to fa_icon('trash-o', type: :fa),  posts_path, class: "level-item icon", method: :delete, data: { confirm: "Are you sure you want to delete this post?"}  if user_signed_in?
+   end
+
 end
+
+#<div class="level-left is-mobile d-flex">
+#        <%= link_to post, class: "level-item" do %>
+#            <span class="icon"> <%= icon_link %></i></span>
+#        <% end %>
+#
+#        <%= link_to edit_post_path(post), class: "level-item" do %>
+#            <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+#        <% end %>
+#rails 
+#        <%= link_to post, method: :delete, data: { confirm: "Are you sure you want to delete this post?"} do %>
+#            <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
+#        <% end %>
+#
+#    </div>

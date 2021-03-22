@@ -1,7 +1,6 @@
 # rubocop:disable Layout/DefEndAlignment
 # rubocop:disable Style/GuardClause
 # rubocop:disable Layout/LineLength
-
 module PostsHelper
   # Navbar
 
@@ -61,11 +60,19 @@ module PostsHelper
   end
 
   def body_gravatar_image_tag
-    render partial: 'gravater' if user_signed_in?
+    render partial: 'gravatar' if user_signed_in?
   end
 
   def render_form
     render partial: 'form' if user_signed_in?
+  end
+
+  def render_feed
+    render partial: 'feed' if user_signed_in?
+  end
+
+  def render_offlinefeed
+    render partial: 'offlinefeed' unless user_signed_in?
   end
 
   def render_user_information

@@ -1,6 +1,9 @@
-module PostsHelper
+# rubocop:disable Layout/DefEndAlignment
+# rubocop:disable Style/GuardClause
+# rubocop:disable Layout/LineLength
 
-  # Navbar 
+module PostsHelper
+  # Navbar
 
   def navbar_current_user_link
     link_to current_user.name, edit_user_registration_path, class: 'text-white nav-item nav-link' if user_signed_in?
@@ -11,12 +14,13 @@ module PostsHelper
   end
 
   def navbar_user_logout
-    link_to 'Logout', destroy_user_session_path, method: :delete, class: 'text-white nav-item nav-link' if user_signed_in?
+    if user_signed_in?
+      link_to 'Logout', destroy_user_session_path, method: :delete, class: 'text-white nav-item nav-link'
+    end
   end
 
   def navbar_user_sign_up
     link_to 'Sign Up', new_user_registration_path, class: 'text-white nav-item nav-link' unless user_signed_in?
-    
   end
 
   def navbar_user_sign_in
@@ -47,7 +51,6 @@ module PostsHelper
     render partial: 'profile' if user_signed_in?
   end
 
-
   def signed_in_only!
     # current_user in ApplicationController must be defined as helper method to make it work
     redirect_to new_user_session_path unless current_user
@@ -59,7 +62,7 @@ module PostsHelper
 
   def body_gravatar_image_tag
     render partial: 'gravater' if user_signed_in?
-  end  
+  end
 
   def render_form
     render partial: 'form' if user_signed_in?
@@ -68,28 +71,30 @@ module PostsHelper
   def render_user_information
     render partial: 'userinformation' if user_signed_in?
   end
-  
+
   def body_current_user
     format(current_user.name) if user_signed_in?
-  end 
-  
+  end
+
   def body_current_username
     format(current_user.username) if user_signed_in?
-  end 
-
+  end
 
   def icon_link
-    link_to fa_icon('link', type: :fa), posts_path(current_user) , class: "level-item icon"  if user_signed_in?
+    link_to fa_icon('link', type: :fa), posts_path(current_user), class: 'level-item icon' if user_signed_in?
   end
 
   def icon_pencil
-    link_to fa_icon('pencil', type: :fa), edit_post_path(current_user), class: "level-item icon"  if user_signed_in?
+    link_to fa_icon('pencil', type: :fa), edit_post_path(current_user), class: 'level-item icon' if user_signed_in?
    end
 
-   def icon_trash
-     link_to fa_icon('trash-o', type: :fa), {:controller => :posts, :action => 'destroy', :id => current_user.posts.ids } , class: "level-item icon", method: :delete, data: { confirm: "Are you sure you want to delete this post?"}  if user_signed_in?
-  end
-
-
+  def icon_trash
+    if user_signed_in?
+      link_to fa_icon('trash-o', type: :fa), { controller: :posts, action: 'destroy', id: current_user.posts.ids }, class: 'level-item icon', method: :delete, data: { confirm: 'Are you sure you want to delete this post?' }
+    end
+ end
 end
 
+# rubocop:enable Layout/DefEndAlignment
+# rubocop:enable Style/GuardClause
+# rubocop:enable Layout/LineLength

@@ -10,7 +10,5 @@ module ApplicationHelper
       end.join.html_safe
     end
  end
-
- 
 end
 # rubocop:enable Layout/DefEndAlignment

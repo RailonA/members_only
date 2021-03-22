@@ -77,36 +77,19 @@ module PostsHelper
     format(current_user.username) if user_signed_in?
   end 
 
-  # def render_icon
-  #   render partial: 'icon' if user_signed_in?
-  # end
-
 
   def icon_link
-    link_to fa_icon('link', type: :fa), posts_path, class: "level-item icon"  if user_signed_in?
+    link_to fa_icon('link', type: :fa), posts_path(current_user) , class: "level-item icon"  if user_signed_in?
   end
 
   def icon_pencil
-    link_to fa_icon('pencil', type: :fa), posts_path, class: "level-item icon"  if user_signed_in?
+    link_to fa_icon('pencil', type: :fa), edit_post_path(current_user), class: "level-item icon"  if user_signed_in?
    end
 
    def icon_trash
-    link_to fa_icon('trash-o', type: :fa),  posts_path, class: "level-item icon", method: :delete, data: { confirm: "Are you sure you want to delete this post?"}  if user_signed_in?
-   end
+     link_to fa_icon('trash-o', type: :fa), {:controller => :posts, :action => 'destroy', :id => current_user.posts.ids } , class: "level-item icon", method: :delete, data: { confirm: "Are you sure you want to delete this post?"}  if user_signed_in?
+  end
+
 
 end
 
-#<div class="level-left is-mobile d-flex">
-#        <%= link_to post, class: "level-item" do %>
-#            <span class="icon"> <%= icon_link %></i></span>
-#        <% end %>
-#
-#        <%= link_to edit_post_path(post), class: "level-item" do %>
-#            <span class="icon"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-#        <% end %>
-#rails 
-#        <%= link_to post, method: :delete, data: { confirm: "Are you sure you want to delete this post?"} do %>
-#            <span class="icon"><i class="fa fa-trash-o" aria-hidden="true"></i></span>
-#        <% end %>
-#
-#    </div>

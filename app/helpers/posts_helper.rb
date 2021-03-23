@@ -1,6 +1,5 @@
-# rubocop:disable Layout/DefEndAlignment
 # rubocop:disable Style/GuardClause
-# rubocop:disable Layout/LineLength
+
 module PostsHelper
   # Navbar
 
@@ -93,15 +92,16 @@ module PostsHelper
 
   def icon_pencil
     link_to fa_icon('pencil', type: :fa), edit_post_path(current_user), class: 'level-item icon' if user_signed_in?
-   end
+  end
 
   def icon_trash
     if user_signed_in?
-      link_to fa_icon('trash-o', type: :fa), { controller: :posts, action: 'destroy', id: current_user.posts.ids }, class: 'level-item icon', method: :delete, data: { confirm: 'Are you sure you want to delete this post?' }
+      link_to fa_icon('trash-o', type: :fa),
+              { controller: :posts, action: 'destroy', id: current_user.posts.ids },
+              class: 'level-item icon', method: :delete,
+              data: { confirm: 'Are you sure you want to delete this post?' }
     end
- end
+  end
 end
 
-# rubocop:enable Layout/DefEndAlignment
 # rubocop:enable Style/GuardClause
-# rubocop:enable Layout/LineLength

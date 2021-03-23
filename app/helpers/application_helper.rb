@@ -1,5 +1,3 @@
-# rubocop:disable Layout/DefEndAlignment
-
 module ApplicationHelper
   def flash_helper
     content_tag :div, class: 'flash-messages' do
@@ -9,6 +7,5 @@ module ApplicationHelper
         end
       end.join.html_safe
     end
- end
+  end
 end
-# rubocop:enable Layout/DefEndAlignment

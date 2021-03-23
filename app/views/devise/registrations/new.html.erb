@@ -1,0 +1,57 @@
+<div class="section">
+	<div class="container">
+	<div class="columns is-centered">
+
+		<div class="column is-4">
+			
+		<h2 class="title is-2">Sign Up</h2>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+  	  	<div class="control">
+    <%= f.label :name %><br />
+    <%= f.email_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+  </div>
+
+  <div class="field">
+  	  	<div class="control">
+    <%= f.label :username %><br />
+    <%= f.email_field :username, autofocus: true, autocomplete: "username" %>
+    </div>
+  </div>
+
+  <div class="field">
+  	  	<div class="control">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+  </div>
+  
+
+  <div class="field">
+  	  	<div class="control">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+  </div>
+  
+
+  <div class="field">
+  	  	<div class="control">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+  </div>
+  
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "button is-info is-medium"  %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
